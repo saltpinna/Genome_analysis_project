@@ -16,5 +16,7 @@ module load trimmomatic
 # Your commands
 cd $HOME/Genome_analysis_project/intermediate
 trimmomatic PE $HOME/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_1_clean.fq.gz \
-$HOME/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina E745-1.L500_SZAXPI015146-56_2_clean.fq.gz \
-trimmomatic_output_1 trimmomatic_output_2 ILLUMINACLIP:TruSeq2-PE.fa
+$HOME/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_2_clean.fq.gz \
+$HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_unpaired_1 $HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_paired_1 \
+$HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_unpaired_2 $HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_paired_2 \
+ILLUMINACLIP:TruSeq3-PE.fa TRAILING:20
