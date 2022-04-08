@@ -7,16 +7,18 @@
 #SBATCH -J Trimmomatic
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user inna.fryckstedt@gmail.com
-#SBATCH --reservation=uppmax2022-2-5_2
+
 
 # Load modules
 module load bioinfo-tools
 module load trimmomatic
 
-# Your commands
-cd $HOME/Genome_analysis_project/intermediate
-trimmomatic PE $HOME/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_1_clean.fq.gz \
-$HOME/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_2_clean.fq.gz \
-$HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_unpaired_1 $HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_paired_1 \
-$HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_unpaired_2 $HOME/Genomics_analysis_project/results/preprocessing/trimmomatic_results/trimmomatic_output_paired_2 \
-ILLUMINACLIP:TruSeq3-PE.fa TRAILING:20
+# Commands
+trimmomatic PE \
+/home/innaf/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_1_clean.fq.gz \
+/home/innaf/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_2_clean.fq.gz \
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_paired.fq.gz \
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_unpaired.fq.gz \
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_paired.fq.gz \
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_unpaired.fq.gz \
+ILLUMINACLIP:/sw/apps/bioinfo/trimmomatic/0.36/rackham/adapters/TruSeq3-PE.fa:2:30:10:2:keepBothReads TRAILING:20
