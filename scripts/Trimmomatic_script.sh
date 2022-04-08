@@ -21,4 +21,4 @@ trimmomatic PE \
 /home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_unpaired.fq.gz \
 /home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_paired.fq.gz \
 /home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_unpaired.fq.gz \
-ILLUMINACLIP:/sw/apps/bioinfo/trimmomatic/0.36/rackham/adapters/TruSeq3-PE.fa:2:30:10:2:keepBothReads TRAILING:20
+ILLUMINACLIP:/sw/apps/bioinfo/trimmomatic/0.36/rackham/adapters/TruSeq3-PE.fa:2:30:10:2:keepBothReads LEADING:36 TRAILING:36 MINLEN:36
