@@ -1,0 +1,21 @@
+Assembly	genome_assembly_canu.contigs
+# misassemblies	190
+  # contig misassemblies	190
+    # c. relocations	176
+    # c. translocations	12
+    # c. inversions	2
+  # scaffold misassemblies	0
+    # s. relocations	0
+    # s. translocations	0
+    # s. inversions	0
+# misassembled contigs	1
+Misassembled contigs length	2775620
+# local misassemblies	36
+# scaffold gap ext. mis.	0
+# scaffold gap loc. mis.	0
+# unaligned mis. contigs	4
+# mismatches	9756
+# indels	472
+    # indels (<= 5 bp)	434
+    # indels (> 5 bp)	38
+Indels length	1661
