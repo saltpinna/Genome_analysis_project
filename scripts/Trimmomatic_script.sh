@@ -17,8 +17,8 @@ module load trimmomatic
 trimmomatic PE \
 /home/innaf/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_1_clean.fq.gz \
 /home/innaf/Genome_analysis_project/data/raw_data/genomics_raw_data/Illumina/E745-1.L500_SZAXPI015146-56_2_clean.fq.gz \
-/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_paired.fq.gz \
-/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_unpaired.fq.gz \
-/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_paired.fq.gz \
-/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_unpaired.fq.gz \
-ILLUMINACLIP:/sw/apps/bioinfo/trimmomatic/0.36/rackham/adapters/TruSeq3-PE.fa:2:30:10:2:keepBothReads LEADING:36 TRAILING:36 MINLEN:36
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_paired_2.fq.gz \
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_unpaired_2.fq.gz \
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_paired_2.fq.gz \
+/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_unpaired_2.fq.gz \
+ILLUMINACLIP:/sw/apps/bioinfo/trimmomatic/0.36/rackham/adapters/TruSeq3-PE.fa:2:30:10:2:keepBothReads LEADING:36 TRAILING:36
