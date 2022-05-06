@@ -1,0 +1,124 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_start
+- STAGE: Read error correction
+  args:
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/corrected/configs/config.info
+  config_dir: corrected
+  del_after:
+  - tmp/hammer_LF7Pqo
+  output_files:
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/corrected/corrected.yaml
+  path: /sw/bioinfo/spades/3.15.3/rackham/bin/spades-hammer
+  short_name: ec_runtool
+- STAGE: corrected reads compression
+  args:
+  - /sw/bioinfo/spades/3.15.3/rackham/share/spades/spades_pipeline/scripts/compress_all.py
+  - --input_file
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/corrected/corrected.yaml
+  - --ext_python_modules_home
+  - /sw/bioinfo/spades/3.15.3/rackham/share/spades
+  - --max_threads
+  - '16'
+  - --output_dir
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/corrected
+  - --not_used_yaml_file
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/corrected/dont_correct.yaml
+  - --gzip_output
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /usr/bin/python
+  short_name: ec_compress
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_finish
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_start
+- STAGE: K55
+  args:
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/configs/config.info
+  config_dir: K55
+  del_after: []
+  output_files: []
+  path: /sw/bioinfo/spades/3.15.3/rackham/bin/spades-core
+  short_name: k55
+- STAGE: Copy files
+  args:
+  - /sw/bioinfo/spades/3.15.3/rackham/share/spades/spades_pipeline/scripts/copy_files.py
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/before_rr.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/before_rr.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/assembly_graph_after_simplification.gfa
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/assembly_graph_after_simplification.gfa
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/final_contigs.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/contigs.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/first_pe_contigs.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/first_pe_contigs.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/strain_graph.gfa
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/strain_graph.gfa
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/scaffolds.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/scaffolds.fasta
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/scaffolds.paths
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/scaffolds.paths
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/assembly_graph_with_scaffolds.gfa
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/assembly_graph_with_scaffolds.gfa
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/assembly_graph.fastg
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/assembly_graph.fastg
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/K55/final_contigs.paths
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/contigs.paths
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_870K5U
+  output_files: []
+  path: /usr/bin/python
+  short_name: copy_files
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /sw/bioinfo/spades/3.15.3/rackham/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/scaffolds.fasta
+  - --misc_dir
+  - /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /usr/bin/python
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  output_files: []
+  path: 'true'
+  short_name: terminate

@@ -1,0 +1,11 @@
+- "number": !!int "1"
+  "single reads":
+  - "/home/innaf/Genome_analysis_project/data/raw_data/genomics_raw_data/Nanopore/E745_all.fasta.gz"
+  "type": "nanopore"
+- "left reads":
+  - "/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_forward_paired_2.fq.gz"
+  "number": !!int "1"
+  "orientation": "fr"
+  "right reads":
+  - "/home/innaf/Genome_analysis_project/results/preprocessing/trimmomatic_results/output_reverse_paired_2.fq.gz"
+  "type": "paired-end"
