@@ -13,20 +13,20 @@ module load bioinfo-tools
 module load bwa
 module load samtools
 
+
 # Create bwa index
 bwa index /home/innaf/Genome_analysis_project/results/assembly/genome_assembly_canu.contigs.fasta
 
 # Perform bwa alignment on BH
-cd /home/innaf/Genome_analysis_project/data/raw_data/transcriptomics_raw_data/RNA-Seq_BH
-for i in trim_paired*
-do
-bwa aln /home/innaf/Genome_analysis_project/results/assembly/genome_assembly_canu.contigs.fasta $i > /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/BH_aln/${i}.sai
-done
 
-for i in {2..4} 
-do 
-	bwa sampe /home/innaf/Genome_analysis_project/results/assembly/genome_assembly_canu.contigs.fasta \
-	/proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/BH_aln/trim_paired_ERR179797${i}* \
-	/home/innaf/Genome_analysis_project/data/raw_data/transcriptomics_raw_data/RNA-Seq_BH/trim_paired_ERR179797${i}* \
-	| samtools sort -o /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/BH_aln/bwa_aligned_ERR179797${i}.bam 
-done
+bwa mem /home/innaf/Genome_analysis_project/results/assembly/genome_assembly_canu.contigs.fasta \
+/proj/genomeanalysis2022/Genome_Analysis/1_Zhang_2017/transcriptomics_data/RNA-Seq_BH/trim_paired_ERR1797972_pass_1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/1_Zhang_2017/transcriptomics_data/RNA-Seq_BH/trim_paired_ERR1797972_pass_2.fastq.gz \
+| samtools sort -o /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/BH_aln/bwa_aligned_ERR1797972_2.bam 
+
+bwa mem /home/innaf/Genome_analysis_project/results/assembly/genome_assembly_canu.contigs.fasta \
+/proj/genomeanalysis2022/Genome_Analysis/1_Zhang_2017/transcriptomics_data/RNA-Seq_BH/trim_paired_ERR1797973_pass_1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/1_Zhang_2017/transcriptomics_data/RNA-Seq_BH/trim_paired_ERR1797973_pass_2.fastq.gz \
+| samtools sort -o /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/BH_aln/bwa_aligned_ERR1797973.bam
+
+bwa mem /home/innaf/Genome_analysis_project/results/assembly/genome_assembly_canu.contigs.fasta \
+/proj/genomeanalysis2022/Genome_Analysis/1_Zhang_2017/transcriptomics_data/RNA-Seq_BH/trim_paired_ERR1797974_pass_1.fastq.gz /proj/genomeanalysis2022/Genome_Analysis/1_Zhang_2017/transcriptomics_data/RNA-Seq_BH/trim_paired_ERR1797974_pass_2.fastq.gz \
+| samtools sort -o /proj/uppmax2022-2-10/nobackup/innaf/Genome_analysis_project/BH_aln/bwa_aligned_ERR1797974.bam
